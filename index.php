@@ -1,5 +1,5 @@
 <?php
-require_once 'SCBEasyAPI.php';
+require_once 'API.php';
 
 // รับข้อมูล Webhook จาก Line Messaging API
 $input = file_get_contents('php://input');
@@ -24,11 +24,11 @@ $output = trim($output);
 
 if (!empty($output)) {
 
-    $scb = new SCBEasyAPI();
+    $API = new API();
    
-    if ($scb->login()) {
+    if ($API->login()) {
         
-         $response = $scb->getcheckslip($output);
+         $response = $API->getcheckslip($output);
 
         if ($response['status']['code'] == 1000) {
             unlink($localFilePath);
